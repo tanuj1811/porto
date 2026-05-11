@@ -1,0 +1,50 @@
+.career-heading {
+  background: linear-gradient(0deg, var(--primary-blue), #ffffff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.career-timeline {
+  background-image: linear-gradient(
+    to top,
+    var(--primary-blue) 20%,
+    var(--primary-blue-dark) 50%,
+    transparent 95%
+  );
+  overflow: hidden;
+}
+
+.career-dot {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  background-color: var(--primary-blue);
+  width: 10px;
+  height: 10px;
+  border-radius: 50px;
+  box-shadow: 0px 0px 5px 2px var(--primary-blue-shadow), 0px 0px 15px 8px var(--primary-blue-shadow),
+    0px 0px 110px 20px var(--primary-blue-shadow);
+  animation: timeline 0.8s linear infinite forwards;
+}
+
+@keyframes timeline {
+  10%,
+  20%,
+  50%,
+  70%,
+  90% {
+    box-shadow: 0px 0px 5px 2px var(--primary-blue-shadow);
+  }
+  10%,
+  30%,
+  0%,
+  100%,
+  64%,
+  80% {
+    box-shadow: 0px 0px 5px 2px var(--primary-blue-shadow), 0px 0px 15px 5px var(--primary-blue-shadow),
+      0px 0px 110px 20px var(--primary-blue-shadow);
+  }
+}

@@ -1,0 +1,107 @@
+/* ─────────────────────────────────────────────────────────
+   loader1.css  —  styles ONLY for Loader.tsx
+   (the particles + quote + progress-bar variant)
+───────────────────────────────────────────────────────── */
+
+/* ── Star particles canvas (sits behind everything) ── */
+.loader-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;        /* clicks pass through to elements below */
+}
+
+.loader-particles canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* ── Center body — holds the quote + progress bar ── */
+.loader-body {
+  position: relative;
+  z-index: 3;
+  flex: 1;                     /* takes up remaining vertical space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px 80px;
+  text-align: center;
+}
+
+.loader-body-content {
+  background: #000;
+  border-radius: 20px;
+  padding: 20px 18px 26px;
+  height: 500px;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ── Animated quote text ── */
+.loader-quote {
+  max-width: min(760px, 88vw);
+  font-size: clamp(1.5rem, 3.8vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+}
+
+/* Default dim state for each character */
+.loader-quote span {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Progress bar ── */
+.loader-progress-wrapper {
+  width: min(480px, 88vw);
+  height: 14px;
+  margin-top: 48px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+  border-radius: 999px;
+  padding: 2px;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.9),
+    0 1px 0 rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+
+.loader-progress-bar {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #fff 0%, var(--primary-blue) 40%);
+  box-shadow:
+    0 0 8px var(--primary-blue),
+    0 0 16px rgba(0, 191, 255, 0.7),
+    0 0 24px rgba(0, 191, 255, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: width 0.15s ease;
+}
+
+/* ── "L O A D I N G . . ." pulsing label ── */
+.loader-progress-label {
+  margin-top: 16px;
+  font-size: 12px;
+  letter-spacing: 0.35em;
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 500;
+  animation: label-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes label-pulse {
+  0%, 100% { opacity: 0.45; }
+  50%       { opacity: 0.9; }
+}
+
+/* ── Responsive tweaks ── */
+@media (max-width: 600px) {
+  .loader-body { padding: 0 24px 60px; }
+}
+
+@media (min-width: 1400px) {
+  .loader-body { padding: 0 60px 100px; }
+}

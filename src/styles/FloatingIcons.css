@@ -1,0 +1,54 @@
+.floating-icons-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.fi {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  will-change: transform;
+}
+
+.fi.visible {
+  opacity: 1;
+}
+
+/* ── Animation keyframes ─────────────────────────────────── */
+
+@keyframes fi-float-a {
+  0%,100% { transform: translateY(0)   rotate(0deg); }
+  50%      { transform: translateY(-22px) rotate(8deg); }
+}
+
+@keyframes fi-float-b {
+  0%,100% { transform: translate(0,    0)     rotate(0deg); }
+  33%     { transform: translate(14px, -18px) rotate(7deg); }
+  66%     { transform: translate(-9px, -11px) rotate(-5deg); }
+}
+
+@keyframes fi-float-c {
+  0%,100% { transform: translateY(0)    scale(1);    }
+  50%     { transform: translateY(-16px) scale(1.1); }
+}
+
+@keyframes fi-bounce {
+  0%,100% { transform: translateY(0); animation-timing-function: ease-in; }
+  50%     { transform: translateY(-20px); animation-timing-function: ease-out; }
+}
+
+@keyframes fi-spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Animation utility classes ───────────────────────────── */
+
+.fi-anim-a     { animation: fi-float-a  5s  ease-in-out infinite; }
+.fi-anim-b     { animation: fi-float-b  6.5s ease-in-out infinite; }
+.fi-anim-c     { animation: fi-float-c  4s  ease-in-out infinite; }
+.fi-bounce     { animation: fi-bounce   2.2s ease infinite; }
+.fi-spin       { animation: fi-spin-slow 12s linear infinite; }

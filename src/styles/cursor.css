@@ -1,0 +1,71 @@
+.cursor-main {
+  --size: 26px;
+  position: fixed;
+  top: calc(var(--size) / -2);
+  left: calc(var(--size) / -2);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50px;
+  pointer-events: none;
+  z-index: 10001;
+  background-color: var(--primary-blue);
+  box-shadow: 0px 0px 30px 0px var(--primary-blue-shadow);
+  mix-blend-mode: difference;
+  transition: top 0.3s ease-out, left 0.3s ease-out, width 0.3s ease-out,
+    height 0.3s ease-out;
+}
+.cursor-icons {
+  top: 10px;
+  left: 10px;
+  height: calc(var(--cursorH) - 20px);
+  transition: all 0.5s ease-out, height 0.5s ease-in-out;
+}
+.cursor-disable {
+  --size: 0px;
+}
+@media only screen and (min-width: 600px) {
+  .cursor-main {
+    --size: 35px;
+  }
+  .cursor-disable {
+    --size: 0px;
+  }
+}
+
+.cursor-email-wrap {
+  height: 70px;
+  display: flex;
+  align-items: flex-end;
+  padding: 8px 0;
+}
+
+.cursor-copy-link {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(125, 211, 252, 0.55);
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.cursor-copy-link:hover {
+  color: #fff;
+  text-decoration-color: rgba(125, 211, 252, 0.95);
+}
+
+.contact-sign {
+  width: 200px;
+  height: 100px;
+  position: relative;
+  transform: translateX(60px) rotate(333deg);
+}

@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+:root {
+  --primary-blue: #00BFFF;
+  --primary-blue-dark: #4169E1;
+  --primary-blue-shadow: rgba(0, 191, 255, 0.6);
+  --text: #fff;
+  --text-h: #08060d;
+  --bg: #000;
+  --border: #e5e4e7;
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: 'IBM Plex Sans', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  font-family: var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+.tube-glow {
+  color: #caf0ff;
+  text-shadow:
+    0 0 1px #caf0ff,
+    0 0 6px var(--primary-blue),
+    0 0 14px rgba(0, 191, 255, 0.85),
+    0 0 30px rgba(0, 191, 255, 0.5);
+}
+
+/* Hide native scrollbars globally while keeping scroll behavior intact */
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
