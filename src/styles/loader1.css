@@ -8,7 +8,7 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  pointer-events: none;        /* clicks pass through to elements below */
+  pointer-events: none;
 }
 
 .loader-particles canvas {
@@ -21,7 +21,7 @@
 .loader-body {
   position: relative;
   z-index: 3;
-  flex: 1;                     /* takes up remaining vertical space */
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,22 +30,32 @@
   text-align: center;
 }
 
+/* Glassmorphism card — matches the site's card style */
 .loader-body-content {
-  background: #000;
-  border-radius: 20px;
-  padding: 20px 18px 26px;
-  height: 500px;
-  width: 800px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 24px;
+  padding: 48px 52px 40px;
+  max-width: min(820px, 90vw);
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  animation: loader-fadein 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes loader-fadein {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0);    }
 }
 
 /* ── Animated quote text ── */
 .loader-quote {
-  max-width: min(760px, 88vw);
-  font-size: clamp(1.5rem, 3.8vw, 2.4rem);
+  max-width: min(720px, 100%);
+  font-size: clamp(1.4rem, 3.4vw, 2.2rem);
   font-weight: 600;
   line-height: 1.55;
   letter-spacing: 0.01em;
@@ -53,53 +63,75 @@
 
 /* Default dim state for each character */
 .loader-quote span {
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.15);
+  transition: color 0.08s ease;
 }
 
 /* ── Progress bar ── */
 .loader-progress-wrapper {
-  width: min(480px, 88vw);
-  height: 14px;
-  margin-top: 48px;
-  background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+  width: min(480px, 100%);
+  height: 3px;
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 999px;
-  padding: 2px;
-  box-shadow:
-    inset 0 2px 4px rgba(0, 0, 0, 0.9),
-    0 1px 0 rgba(255, 255, 255, 0.04);
   overflow: hidden;
 }
 
 .loader-progress-bar {
   height: 100%;
   border-radius: 999px;
-  background: linear-gradient(180deg, #fff 0%, var(--primary-blue) 40%);
+  background: linear-gradient(90deg, var(--primary-blue-dark) 0%, var(--primary-blue) 60%, #c9f0ff 100%);
   box-shadow:
     0 0 8px var(--primary-blue),
-    0 0 16px rgba(0, 191, 255, 0.7),
-    0 0 24px rgba(0, 191, 255, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    0 0 18px rgba(0, 191, 255, 0.55);
   transition: width 0.15s ease;
 }
 
-/* ── "L O A D I N G . . ." pulsing label ── */
+/* ── HUD row: label + percentage counter ── */
+.loader-hud-row {
+  width: min(480px, 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 14px;
+}
+
+/* ── "LOADING" pulsing label ── */
 .loader-progress-label {
-  margin-top: 16px;
-  font-size: 12px;
-  letter-spacing: 0.35em;
-  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  color: rgba(255, 255, 255, 0.35);
   font-weight: 500;
+  text-transform: uppercase;
   animation: label-pulse 1.6s ease-in-out infinite;
 }
 
 @keyframes label-pulse {
-  0%, 100% { opacity: 0.45; }
-  50%       { opacity: 0.9; }
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.85; }
+}
+
+/* ── Percentage counter ── */
+.loader-perc-counter {
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  color: #fff;
+  line-height: 1;
+}
+
+.loader-perc-unit {
+  font-size: 0.38em;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: 0.08em;
+  vertical-align: super;
 }
 
 /* ── Responsive tweaks ── */
 @media (max-width: 600px) {
-  .loader-body { padding: 0 24px 60px; }
+  .loader-body          { padding: 0 20px 60px; }
+  .loader-body-content  { padding: 32px 28px 28px; }
 }
 
 @media (min-width: 1400px) {

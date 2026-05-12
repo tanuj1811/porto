@@ -7,8 +7,8 @@ import {
   type Dispatch,
   type SetStateAction,
 } from "react";
-// import Loader from "./Loader";
-import Loader2 from "./Loader2";
+import Loader from "./Loader";
+// import Loader2 from "./Loader2";
 
 // const random = Math.floor(Math.random() * 10);
 
@@ -37,7 +37,7 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
     <LoadingContext.Provider value={value}>
       {isLoading && <>
         {/* {random % 2 === 1 ? <Loader /> : <Loader2 />} */}
-        <Loader2 />
+        <Loader />
       </>}
       <main className="main-body">{children}</main>
     </LoadingContext.Provider>

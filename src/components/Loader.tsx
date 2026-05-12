@@ -45,11 +45,17 @@ const PARTICLE_OPTIONS: IParticlesProps["options"] = {
 
 // Isolated component — only re-renders when loadingPerc changes
 const LoaderProgress = () => {
-  const { loadingPerc } = useLoading();
+  const { loadingPerc, setIsLoading } = useLoading();
   const [quote] = useState(
     () => genZQuotes[Math.floor(Math.random() * genZQuotes.length)]
   );
   const glowCount = Math.floor((loadingPerc / 100) * quote.length);
+
+  useEffect(() => {
+    if (loadingPerc >= 100) {
+      setIsLoading(false);
+    }
+  }, [loadingPerc, setIsLoading]);
 
   return (
     <div className="loader-body">
@@ -68,7 +74,13 @@ const LoaderProgress = () => {
           />
         </div>
         {loadingPerc < 100 && (
-          <div className="loader-progress-label">L O A D I N G . . .</div>
+          <div className="loader-hud-row">
+            <span className="loader-progress-label">Loading</span>
+            <span className="loader-perc-counter">
+              {Math.floor(loadingPerc)}
+              <span className="loader-perc-unit">%</span>
+            </span>
+          </div>
         )}
       </div>
     </div>
@@ -78,7 +90,6 @@ const LoaderProgress = () => {
 // Loader never reads from context — only re-renders once when particles init
 const Loader = () => {
   const [initParticles, setInitParticles] = useState(false);
-  const { loadingPerc, setIsLoading } = useLoading();
 
   useEffect(() => {
     const init = async () => {
@@ -90,12 +101,6 @@ const Loader = () => {
     init();
   }, []);
 
-  useEffect(() => {
-    if (loadingPerc >= 100) {
-      setIsLoading(false);
-    }
-  }, [loadingPerc, setIsLoading]);
-
   return (
     <div className="loader-container">
       <div className="landing-circle1" />
@@ -106,14 +111,6 @@ const Loader = () => {
 
       <header className="loader-header">
         <div className="loader-logo">Tanuj Sharma</div>
-        <div className="loader-game">
-          <div className="loader-game-pipes">
-            {Array.from({ length: 27 }, (_, i) => (
-              <div className="loader-game-pipe" key={i} />
-            ))}
-          </div>
-          <div className="loader-game-ball" />
-        </div>
       </header>
 
       <LoaderProgress />

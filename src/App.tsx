@@ -15,10 +15,10 @@ TDOD:
 function App() {
   const { setLoadingPerc } = useLoading();
   useEffect(() => {
-    const finishTime = Math.random() * (4000 - 4000) + 6000;
+    const finishTime = Math.random() * (2000) + 5000;
     const interval = setInterval(() => {
-      // setLoadingPerc((prev: number) => prev + 1)
-    }, 100);
+      setLoadingPerc((prev: number) => Math.min(prev + 1, 99));
+    }, finishTime / 100);
 
     setTimeout(() => {
       clearInterval(interval);
