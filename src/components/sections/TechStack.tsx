@@ -226,7 +226,7 @@ const TechStack = () => {
           overwrite: "auto",
           onComplete: function () {
             // Only proceed when the last-arriving card (cards[0]) lands
-            if ((this as gsap.core.Tween).targets()[0] !== cards[0]) return;
+            if ((this as unknown as gsap.core.Tween).targets()[0] !== cards[0]) return;
 
             // Phase 3: Fan out — cards spread to their base rotations
             gsap.to(cards, {
