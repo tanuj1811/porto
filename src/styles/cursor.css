@@ -32,6 +32,25 @@
   }
 }
 
+.cursor-topbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  background-color: transparent;
+  transition:
+    backdrop-filter 220ms ease,
+    -webkit-backdrop-filter 220ms ease,
+    background-color 220ms ease;
+}
+
+.cursor-topbar--scrolled {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background-color: transparent;
+}
+
 .cursor-email-wrap {
   height: 70px;
   display: flex;

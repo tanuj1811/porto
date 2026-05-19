@@ -7,6 +7,7 @@ const CONTACT_EMAIL = "tanujsharma1811@gmail.com";
 const Cursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
   const [copied, setCopied] = useState(false);
+  const [isHeaderBlurred, setIsHeaderBlurred] = useState(false);
 
   useEffect(() => {
     console.log("Copied", copied);
@@ -102,10 +103,24 @@ const Cursor = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const updateHeaderBlur = () => {
+      setIsHeaderBlurred(window.scrollY > 8);
+    };
+
+    updateHeaderBlur();
+    window.addEventListener("scroll", updateHeaderBlur, { passive: true });
+    return () => window.removeEventListener("scroll", updateHeaderBlur);
+  }, []);
+
   return <>
     <div className="cursor-main" ref={cursorRef}></div>
+    {/* Topbar - header */}
     <div className="landing-circle1" />
-    <header className="loader-header sticky! top-0 ">
+    <div className="landing-circle2" />
+    <div className="landing-circle3" />
+
+    <header className={`loader-header cursor-topbar ${isHeaderBlurred ? "cursor-topbar--scrolled" : ""}`}>
       <div className="loader-logo">Tanuj Sharma</div>
       <div className="cursor-email-wrap">
         <button
@@ -113,7 +128,6 @@ const Cursor = () => {
           className="cursor-copy-link"
           onClick={handleCopyEmail}
         >
-          {/* {copied ? "Copied" : "Copy Email Address"} */}
         </button>
       </div>
     </header>

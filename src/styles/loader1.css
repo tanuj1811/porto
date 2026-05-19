@@ -1,23 +1,8 @@
 /* ─────────────────────────────────────────────────────────
    loader1.css  —  styles ONLY for Loader.tsx
-   (the particles + quote + progress-bar variant)
 ───────────────────────────────────────────────────────── */
 
-/* ── Star particles canvas (sits behind everything) ── */
-.loader-particles {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.loader-particles canvas {
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
-}
-
-/* ── Center body — holds the quote + progress bar ── */
+/* ── Center body — holds SVG + HUD ── */
 .loader-body {
   position: relative;
   z-index: 3;
@@ -26,74 +11,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 40px 80px;
-  text-align: center;
-}
-
-/* Glassmorphism card — matches the site's card style */
-.loader-body-content {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 24px;
-  padding: 48px 52px 40px;
-  max-width: min(820px, 90vw);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  animation: loader-fadein 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-@keyframes loader-fadein {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0);    }
-}
-
-/* ── Animated quote text ── */
-.loader-quote {
-  max-width: min(720px, 100%);
-  font-size: clamp(1.4rem, 3.4vw, 2.2rem);
-  font-weight: 600;
-  line-height: 1.55;
-  letter-spacing: 0.01em;
-}
-
-/* Default dim state for each character */
-.loader-quote span {
-  color: rgba(255, 255, 255, 0.15);
-  transition: color 0.08s ease;
-}
-
-/* ── Progress bar ── */
-.loader-progress-wrapper {
-  width: min(480px, 100%);
-  height: 3px;
-  margin-top: 40px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.loader-progress-bar {
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--primary-blue-dark) 0%, var(--primary-blue) 60%, #c9f0ff 100%);
-  box-shadow:
-    0 0 8px var(--primary-blue),
-    0 0 18px rgba(0, 191, 255, 0.55);
-  transition: width 0.15s ease;
+  gap: 32px;
 }
 
 /* ── HUD row: label + percentage counter ── */
 .loader-hud-row {
-  width: min(480px, 100%);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: baseline;
-  margin-top: 14px;
+  gap: 12px;
 }
 
 /* ── "LOADING" pulsing label ── */
@@ -128,12 +54,17 @@
   vertical-align: super;
 }
 
-/* ── Responsive tweaks ── */
-@media (max-width: 600px) {
-  .loader-body          { padding: 0 20px 60px; }
-  .loader-body-content  { padding: 32px 28px 28px; }
+/* ── TS logo SVG draw animation ── */
+.ts-loader .ts-ghost { fill: rgba(242,241,236,0.10); }
+.ts-loader .ts-ink {
+  fill: none; stroke: #0EA5E9; stroke-width: 10;
+  stroke-linejoin: round; stroke-linecap: round;
+  stroke-dasharray: 2818; stroke-dashoffset: 2818;
+  animation: ts-draw 2.6s ease-in-out infinite;
 }
-
-@media (min-width: 1400px) {
-  .loader-body { padding: 0 60px 100px; }
+@keyframes ts-draw {
+  0%   { stroke-dashoffset: 2818; }
+  55%  { stroke-dashoffset: 0; }
+  70%  { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -2818; }
 }

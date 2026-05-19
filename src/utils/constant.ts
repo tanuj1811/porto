@@ -1,5 +1,5 @@
 import {
-  FaEnvelope, FaGithub, FaLinkedinIn, FaPhone,
+  FaEnvelope, FaGithub, FaLinkedinIn,
 } from "react-icons/fa6";
 import {
   FaMusic, FaHeadphones, FaGuitar,
@@ -7,7 +7,7 @@ import {
   FaCode, FaChess, FaBookOpen, FaPlane,
 } from "react-icons/fa";
 import { TbNotes } from "react-icons/tb";
-import { FiGithub, FiLinkedin, FiTwitter, FiInstagram } from "react-icons/fi";
+import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
 import { BsMusicNoteBeamed, BsCameraReelsFill } from "react-icons/bs";
 import { IoMusicalNotes } from "react-icons/io5";
 import { SiReact, SiTypescript } from "react-icons/si";
@@ -27,7 +27,6 @@ export const PERSONAL = {
   name: "Tanuj Sharma",
   displayName: "Tanuj",
   email: "tanujsharma1811@gmail.com",
-  phone: "+919501802975",
   location: "Bengaluru, India",
   resumePath: "/tanuj_3yoe.pdf",
   letterboxd: "https://boxd.it/hH8J9",
@@ -38,8 +37,8 @@ export const PERSONAL = {
 export const LINKS = {
   github: "https://github.com/tanuj1811",
   linkedin: "https://www.linkedin.com/in/tanuj1811/",
-  twitter: "https://x.com",
-  instagram: "https://www.instagram.com",
+  twitter: "https://x.com/tanujsh44425788",
+  instagram: "https://www.instagram.com/tanuj_dadheech",
 };
 
 // ─── Nav Sections ─────────────────────────────────────────────────────────────
@@ -66,7 +65,7 @@ export const socialLinks: SocialLink[] = [
   { label: "GitHub",   href: LINKS.github,                        icon: FaGithub,     openInNewTab: true  },
   { label: "LinkedIn", href: LINKS.linkedin,                      icon: FaLinkedinIn, openInNewTab: true  },
   { label: "Email",    href: `mailto:${PERSONAL.email}`,          icon: FaEnvelope                        },
-  { label: "Phone",    href: `tel:${PERSONAL.phone}`,             icon: FaPhone                           },
+  // { label: "Phone",    href: `tel:${PERSONAL.phone}`,             icon: FaPhone                           },
   { label: "Resume",   href: PERSONAL.resumePath,                 icon: TbNotes,      openInNewTab: true  },
 ];
 
@@ -76,7 +75,7 @@ export const contactSocials = [
   { href: LINKS.github,    label: "GitHub",    icon: FiGithub    },
   { href: LINKS.linkedin,  label: "LinkedIn",  icon: FiLinkedin  },
   { href: LINKS.twitter,   label: "Twitter",   icon: FiTwitter   },
-  { href: LINKS.instagram, label: "Instagram", icon: FiInstagram },
+  // { href: LINKS.instagram, label: "Instagram", icon: FiInstagram },
 ];
 
 // ─── Career Entries ───────────────────────────────────────────────────────────

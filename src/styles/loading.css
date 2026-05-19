@@ -114,6 +114,36 @@
   animation: glow-spin 5s linear infinite;
 }
 
+.landing-circle2 {
+  position: fixed;
+  top: 40%;
+  right: -15%;
+  z-index: 15;
+  width: 100px;
+  height: 150px;
+  background-color: var(--primary-blue);
+  box-shadow: inset -50px 40px 50px rgba(0, 191, 255, 0.6);
+  filter: blur(60px);
+  border-radius: 50%;
+  animation: glow-spin 5s linear infinite;
+}
+
+.landing-circle3 {
+  position: fixed;
+  top: 55%;
+  right: -15%;
+  z-index: 15;
+  width: 100px;
+  height: 150px;
+  background-color: var(--primary-blue);
+  box-shadow: inset -50px 40px 50px rgba(0, 191, 255, 0.6);
+  filter: blur(60px);
+  border-radius: 50%;
+  animation: glow-spin 5s linear infinite;
+}
+
+
+
 @keyframes glow-spin {
   from { transform: translate(-95%, -75%) rotateZ(0deg); }
   to   { transform: translate(-95%, -75%) rotateZ(360deg); }

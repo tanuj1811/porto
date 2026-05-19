@@ -273,7 +273,7 @@ export default function HomeSection() {
                     style={{ color: "inherit", textDecoration: "none" }}
                     onMouseEnter={e => (e.currentTarget.style.textDecoration = "underline")}
                     onMouseLeave={e => (e.currentTarget.style.textDecoration = "none")}
-                  >see my letterboxd</a>), travelling, listening to music,
+                  >click to see my letterboxd</a>), travelling, listening to music,
                   playing chess (just kidding, i am bad at it.), and occasionally pretending
                   I’ll sleep early after “just one more feature”.
 

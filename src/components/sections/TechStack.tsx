@@ -78,7 +78,7 @@ const TechStack = () => {
         y: 140,
         rotationZ: i % 2 === 0 ? 0.55 : -0.55,
         scale: 0.88,
-        zIndex: categories.length - i,
+        zIndex: i == 2 ? categories.length + 1 : categories.length - i,
       });
     });
 
